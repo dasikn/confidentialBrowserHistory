@@ -73,18 +73,24 @@ docker run -d -p 3000:8080 \
   ghcr.io/open-webui/open-webui:main
 ```
 
+This takes some time. Open WebUI will then be accessible on `http://localhost:3000/`.
+
+We recommend using `gpt-oss-120b` as a chat model.
+
 Then add the MCP tool:
 
-1. Go to **Settings > Tools > Add MCP Server**
-2. Set the URL to `http://host.docker.internal:8001/mcp`
-3. Set both **Name** and **ID** to `browser-history`
+1. Go to **Admin Panel > Settings > External Tools > Add Connection**
+2. Set Type to `MCP Streamable HTTP`
+3. Set the URL to `http://host.docker.internal:8001/mcp`
+4. Set Auth to `None`
+5. Set both **Name** and **ID** to `browser-history`
 
 > `host.docker.internal` is required because Open WebUI runs in its own container and `localhost` would refer to itself. If you run Open WebUI natively (not in Docker), use `http://localhost:8001/mcp` instead.
 
 ### 5. Use it
 
 - **Index a page**: Visit any page and click the "Index Page" button (bottom-right corner)
-- **Search**: Ask questions in your MCP client about pages you've indexed
+- **Search**: Ask questions in your Chat about pages you've indexed. Don't forget to activate the tool in the chat window.
 - **Manage history**: Click the extension icon in the toolbar to delete indexed history by date or entirely
 
 ## API Endpoints
