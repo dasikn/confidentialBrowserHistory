@@ -1,14 +1,16 @@
 # ConfidentialHistorySearch
 
-A Firefox extension and backend that indexes web pages you visit into a local vector database, making your browsing history searchable via semantic search through an LLM chat interface. All using confidential AI, so your data stays private, because who likes to share their browser history?
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+
+A Firefox extension and backend that indexes web pages you visit into a local vector database, making your browsing history searchable via semantic search through an LLM chat interface. All using confidential AI, so your data stays private, Because who likes to share their browser history? ;-).
 
 ## How it works
 
 1. **Browse the web** and click "Index Page" on any page you want to remember
-2. The page content is chunked, embedded, and stored in ChromaDB
+2. The page content is chunked, embedded, and stored in a local ChromaDB
 3. **Ask questions** through any MCP-compatible client (e.g. Open WebUI) and the LLM automatically searches your indexed pages for relevant context
 
-All LLM and embedding requests are encrypted via [Privatemode Proxy](https://www.privatemode.ai/en) before reaching the cloud, ensuring your browsing data stays confidential.
+When following this setup, all LLM and embedding requests are encrypted via [Privatemode Proxy](https://www.privatemode.ai/en) before reaching the cloud, ensuring your browsing data stays confidential.
 
 ## Architecture
 
