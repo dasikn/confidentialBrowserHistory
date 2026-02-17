@@ -1,6 +1,6 @@
 # ConfidentialHistorySearch
 
-A Firefox extension that indexes web pages you visit into a local vector database, making your browsing history searchable via semantic search through an LLM chat interface. All using confidential AI, so your data stays private, because who likes to share their browser history?
+A Firefox extension and backend that indexes web pages you visit into a local vector database, making your browsing history searchable via semantic search through an LLM chat interface. All using confidential AI, so your data stays private, because who likes to share their browser history?
 
 ## How it works
 
@@ -11,20 +11,6 @@ A Firefox extension that indexes web pages you visit into a local vector databas
 All LLM and embedding requests are encrypted via [Privatemode Proxy](https://www.privatemode.ai/en) before reaching the cloud, ensuring your browsing data stays confidential.
 
 ## Architecture
-
-```
-Firefox Extension ──POST /index-page──> Backend API (:8002) ──> ChromaDB
-                                              │                     │
-                                              │ embeddings          │
-                                              v                     │
-                                        Privatemode Proxy (:8080)   │
-                                              ^           ^         │
-                                   embeddings │           │ LLM     │
-                                              │           │         │
-              MCP Client ──MCP──> MCP Server (:8001) ─────┼─────────┘
-                   │                                      │
-                   └──────────────────────────────────────-┘
-```
 
 | Service                     | Purpose                                                            |
 | --------------------------- | ------------------------------------------------------------------ |
@@ -94,8 +80,6 @@ Then add the MCP tool:
 3. Set both **Name** and **ID** to `browser-history`
 
 > `host.docker.internal` is required because Open WebUI runs in its own container and `localhost` would refer to itself. If you run Open WebUI natively (not in Docker), use `http://localhost:8001/mcp` instead.
-
-To stay confidential, you should use a chat model served as Confidential AI. For example, you can activate Confidential AI in Open WebUI as explained [here](https://www.privatemode.ai/en/tutorials/openwebui-integration). The Privatemode Proxy is already included in the docker-compose, so you just need to configure your MCP client to use it.
 
 ### 5. Use it
 
