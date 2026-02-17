@@ -1,0 +1,51 @@
+services:
+  # 1. Privatemode Proxy (LLM & Embeddings)
+  privatemode-proxy:
+    image: ghcr.io/edgelesssys/privatemode/privatemode-proxy:latest
+    container_name: privatemode-proxy
+    command: --apiKey ${PRIVATEMODE_API_KEY:?Set PRIVATEMODE_API_KEY in .env}
+    ports:
+      - "8080:8080"
+    networks:
+      - mcp-net
+    restart: always
+
+  # 2. ChromaDB Server
+  chromadb:
+    image: chromadb/chroma
+    container_name: chromadb
+    volumes:
+      - chroma-data:/chroma/chroma
+    expose:
+      - "8000"
+    networks:
+      - mcp-net
+    restart: always
+
+  # 3. Browser History MCP Server
+  browser-history:
+    build:
+      context: ./backend
+    container_name: browser-history
+    depends_on:
+      - chromadb
+    expose:
+      - "8001"
+      - "8002"
+    ports:
+      - "8001:8001"
+      - "8002:8002"
+    environment:
+      - "BASE_URL=http://privatemode-proxy:8080/v1"
+      - "CHROMA_HOST=chromadb"
+      - "CHROMA_PORT=8000"
+    networks:
+      - mcp-net
+    restart: always
+
+networks:
+  mcp-net:
+    driver: bridge
+
+volumes:
+  chroma-data:

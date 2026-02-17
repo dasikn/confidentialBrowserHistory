@@ -1,0 +1,19 @@
+# Secrets
+.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[oc]
+.venv/
+
+# Build artifacts
+*.zip
+build/
+dist/
+wheels/
+*.egg-info
+
+# IDE / tools
+.claude/
+**/.claude/

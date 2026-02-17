@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "ConfidentialHistorySearch",
+  "version": "1.1",
+  "permissions": ["scripting", "tabs", "activeTab"],
+  "host_permissions": ["<all_urls>", "http://127.0.0.1:8002/*"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "confidential-history-search@example.com",
+      "data_collection_permissions": {
+        "required": ["none"],
+        "optional": []
+      }
+    }
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "ConfidentialHistorySearch Settings"
+  }
+}
