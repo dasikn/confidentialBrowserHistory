@@ -2,7 +2,7 @@
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
-A Firefox extension and backend that indexes web pages you visit into a local vector database, making your browsing history searchable via semantic search through an LLM chat interface. All using confidential AI, so your data stays private, Because who likes to share their browser history? ;-).
+A Firefox extension and backend that indexes web pages you visit into a local vector database, making your browsing history searchable via semantic search through an LLM chat interface. All using confidential AI, so your data stays private. Because who likes to share their browser history? ;-).
 
 ## How it works
 
@@ -87,7 +87,15 @@ Then add the MCP tool:
 4. Set Auth to `None`
 5. Set both **Name** and **ID** to `browser-history`
 
+![App Screenshot](assets/openwebui-step1.png)
+
 > `host.docker.internal` is required because Open WebUI runs in its own container and `localhost` would refer to itself. If you run Open WebUI natively (not in Docker), use `http://localhost:8001/mcp` instead.
+
+### 4. Activate the tool
+
+In the chat window, activate the tool under "Integration" right beneath the chat input:
+
+![App Screenshot](assets/openwebui-step2.png)
 
 ### 5. Use it
 
