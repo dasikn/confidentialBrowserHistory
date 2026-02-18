@@ -14,13 +14,13 @@ When following this setup, all LLM and embedding requests are encrypted via [Pri
 
 ## Architecture
 
-| Service                     | Purpose                                                            |
-| --------------------------- | ------------------------------------------------------------------ |
-| **Firefox Extension**       | Captures page content and sends it for indexing                    |
-| **Backend API** (port 8002) | Receives pages, chunks text, stores embeddings                     |
-| **MCP Server** (port 8001)  | Exposes semantic search as a tool for any MCP client               |
-| **ChromaDB**                | Vector database for storing and querying embeddings                |
-| **Privatemode Proxy**       | Encrypts LLM and embedding requests for confidential AI processing |
+| Service               | Purpose                                                            |
+| --------------------- | ------------------------------------------------------------------ |
+| **Firefox Extension** | Captures page content and sends it for indexing                    |
+| **Backend API**       | Receives pages, chunks text, stores embeddings                     |
+| **MCP Server**        | Exposes semantic search as a tool for any MCP client               |
+| **ChromaDB**          | Vector database for storing and querying embeddings                |
+| **Privatemode Proxy** | Encrypts LLM and embedding requests for confidential AI processing |
 
 ## Setup
 
